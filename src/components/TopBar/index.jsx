@@ -8,12 +8,12 @@ function buildContextTitle(pathname) {
   const mPhotos = pathname.match(/^\/photos\/([^/]+)$/);
   if (mPhotos) {
     const user = models.userModel(mPhotos[1]);
-    return `Photos of ${user.first_name} ${user.last_name}`;
+		return user ? `Photos of ${user.first_name} ${user.last_name}` : "Photos";
   }
   const mUser = pathname.match(/^\/users\/([^/]+)$/);
   if (mUser) {
     const user = models.userModel(mUser[1]);
-    return `${user.first_name} ${user.last_name} Details`
+    return user ? `${user.first_name} ${user.last_name}` : "User Detail";
   }
   if (pathname === "/users") return "User List";
 
